@@ -1,5 +1,5 @@
 // test.js
-const client = require('./db');
+const client = require('../db');
 
 beforeAll(async () => {
   await client.connect();
