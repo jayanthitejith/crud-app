@@ -1,0 +1,20 @@
+name: Run on Self-hosted & Simulated Runners
+
+on: [push]
+
+jobs:
+  mac:
+    runs-on: [self-hosted, macos]
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Running on Mac (M3) self-hosted runner"
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Simulated Linux on GitHub-hosted runner"
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - run: echo "Simulated Windows on GitHub-hosted runner"
