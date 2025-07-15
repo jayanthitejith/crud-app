@@ -1,0 +1,28 @@
+name: Run Tests & Upload Report
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Environment
+        uses: actions/setup-node@v4  # or python if needed
+        with:
+          node-version: '18'         # or python-version: '3.10'
+
+      - name: Install Dependencies
+        run: npm install             # or pip install -r requirements.txt
+
+      - name: Run Tests
+        run: npm test > test-report.txt   # or pytest > test-report.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: test-report.txt
